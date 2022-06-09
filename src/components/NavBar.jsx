@@ -1,3 +1,5 @@
+import CartWidget from "./CartWidget";
+
 export default function NavBar(){
 
     return (
@@ -13,10 +15,12 @@ export default function NavBar(){
                     </li>
                     <li class="nav-item active ml-3"> 
                         <a class="nav-link text-light" href="./" >
-                        Ofertas
+                            Ofertas
                         </a> 
-                    </li>
+                    </li>                  
                 </ul>
+
+                <CartWidget/>           
         </nav>
 
 );
