@@ -1,0 +1,21 @@
+/* just for preview */
+.container {
+    padding-top: 40px;  
+}
+
+.btn-stepper{
+    background-color: aliceblue;
+    color: gray;
+    font-family: 'Courier New';
+}
+
+.text-stepper{
+/*    background-color: gray; */    
+    color:aliceblue;
+    font-family: 'Courier New';
+    font-size: large;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: 0.05rem;
+    margin-right: 0.05rem;
+}
