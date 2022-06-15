@@ -10,12 +10,13 @@
 }
 
 .text-stepper{
-/*    background-color: gray; */    
-    color:aliceblue;
+/*    background-color: gray; */        
+    color:darkslategray;
     font-family: 'Courier New';
     font-size: large;
     padding-left: 1rem;
     padding-right: 1rem;
     margin-left: 0.05rem;
     margin-right: 0.05rem;
+    
 }

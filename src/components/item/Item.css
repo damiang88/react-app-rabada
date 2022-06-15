@@ -1,0 +1,9 @@
+.cardList{
+    display:inline-flex;
+    width: 100%;
+    padding: 1rem;
+    margin: 6px 6px 6px 6px;
+    text-align: center;
+    background-color: white;
+    justify-content: center;
+}

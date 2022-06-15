@@ -20,7 +20,6 @@ export default function ItemCount({stock, initial }) {
           if(count> initial){
             setCount(count-1);
           }
-         
        };      
   
   return (
@@ -28,14 +27,12 @@ export default function ItemCount({stock, initial }) {
         <div>
             <button onClick={resta}
             type="button" className="btn btn-stepper btn-secondary btn-sm"
-            disabled={count === initial ? true : null}
-            >-</button>
+            disabled={count === initial ? true : null}>-</button>
             <span className="text-stepper">{count}</span>
             <button onClick={suma} 
             type="button" 
             disabled={count === stock ? true : null}
             className="btn btn-stepper btn-secondary btn-sm">+</button>
-            
             <br/>
             <button type="button" onClick={() => onAdd(count)}
 
