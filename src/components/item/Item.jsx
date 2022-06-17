@@ -1,6 +1,6 @@
 import React from 'react'
 import './Item.css';
-import ItemCount from "./ItemCount";
+import ItemCount from "../itemcount/ItemCount";
 
 export default function item({item}) {
 
