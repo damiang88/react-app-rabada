@@ -2,20 +2,17 @@ import React from 'react'
 import ItemCount from '../itemcount/ItemCount'
 import './ItemDetail.css'
 
-export default function itemdetail({item}) {
-
-    let mockPic = (item.pictureUrl + new Date().getTime())
-
+export default function ItemDetail({item}) {
 
   return (
-    <div>ItemDetail
+    <div>Detalle
         <br/>
 
         <div className="card cardList" style={{width: '80rem', height:'30rem'}}> 
             <div className="card-body">
             <div className='row'>
                 <div className="col">
-                <img alt="Articulo" src={mockPic} style={{width: "20rem", height:"20rem", alignContent:"center"}}/>
+                <img alt="Articulo" src={item.pictureUrl} style={{maxWidth: "20rem", maxHeight:"20rem", alignContent:"center"}}/>
 
                 </div>
                 <div className="col">

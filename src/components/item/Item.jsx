@@ -1,24 +1,20 @@
 import React from 'react'
 import './Item.css';
 import ItemCount from "../itemcount/ItemCount";
+import {NavLink} from'react-router-dom';
 
 export default function item({item}) {
-
-    //{id, title, price, pictureUrl,stock}
-
-    let mockPic = (item.pictureUrl + new Date().getTime())
 
   return (
 
         <div className="card cardList" style={{width: '18rem'}}> 
-            <img  alt="Articulo"  src={mockPic}/>
+            <img  alt="Articulo"  src={item.pictureUrl} />
             
             <div className="card-body">
                 <h5 className="card-title text-dark">{item.title}</h5>
                 <p className="card-text text-dark"> ${item.price}</p>
-                <a href="." className="btn btn-light border">Ver Detalle</a>
+                <NavLink to={`/item/${item.id}`} className="btn btn-light border">Ver Detalle</NavLink>
                 <br/>
-
                 <ItemCount stock={item.stock} initial={0} />
             </div>
         </div>

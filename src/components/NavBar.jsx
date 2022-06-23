@@ -1,25 +1,26 @@
-import CartWidget from "./CartWidget";
+import CartWidget from "./CartWidget/CartWidget";
+import {Link, NavLink} from'react-router-dom';
 
-export default function NavBar(){
+export default function NavBar(props){
 
-    return (
-        <nav className="sb-topnav navbar navbar-expand navbar-light bg-dark shadow">
-                <a className="navbar-brand ps-3 text-light" href="./">  
-                    Home
-                </a>
+    return (    
+        <nav className="sb-topnav navbar navbar-expand navbar-light px-3 bg-dark shadow">
+                <Link to='/' className="navbar-brand" >
+                <img src={props.logo} className="" width="74" height="74" alt="" />
+                </Link>
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active ml-3"> 
-                        <a className="nav-link text-light" href="./" >
+                        <NavLink to={"/category/Productos"} className="nav-link text-light">
                             Productos
-                        </a> 
+                        </NavLink>
                     </li>
                     <li className="nav-item active ml-3"> 
-                        <a className="nav-link text-light" href="./" >
-                            Ofertas
-                        </a> 
+                        <NavLink to={"/category/LineaGamer"} className="nav-link text-light">
+                            Linea Gamer
+                        </NavLink>
                     </li>                  
                 </ul>
-                <CartWidget/>           
+            <CartWidget/>           
         </nav>
 );
 }

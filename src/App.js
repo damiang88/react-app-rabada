@@ -1,21 +1,28 @@
-import logo from './logo.svg';
+import logo from './assets/img/logo_size_invert.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/itemlistcontainer/ItemListContainer';
 import ItemDetailContainer from './components/itemdetailcontainer/ItemDetailContainer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
 //<ItemListContainer greeting={"Bienvenido"}/> 
 
   return (
-    <div className="App">
-      <NavBar/>      
-      <header className="App-header">
-       <ItemDetailContainer greeting={"Bienvenido"}/> 
 
-      </header>     
-    </div>
+    <BrowserRouter>
+    <div className="App">
+      <NavBar logo={logo}/>
+      <Routes>
+        <Route exact path="/" element={<ItemListContainer />}/>
+        <Route exact path="/category/:id" element={<ItemListContainer />}/>
+        <Route exact path="/item/:id" element={<ItemDetailContainer />}/>
+
+      </Routes>       
+    </div>    
+    </BrowserRouter>
+    
   );
 }
 
