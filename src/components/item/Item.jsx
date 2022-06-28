@@ -1,10 +1,10 @@
 import React from 'react'
 import './Item.css';
-import ItemCount from "../itemcount/ItemCount";
 import {NavLink} from'react-router-dom';
 
 export default function item({item}) {
 
+ 
   return (
 
         <div className="card cardList" style={{width: '18rem'}}> 
@@ -15,7 +15,6 @@ export default function item({item}) {
                 <p className="card-text text-dark"> ${item.price}</p>
                 <NavLink to={`/item/${item.id}`} className="btn btn-light border">Ver Detalle</NavLink>
                 <br/>
-                <ItemCount stock={item.stock} initial={0} />
             </div>
         </div>
     

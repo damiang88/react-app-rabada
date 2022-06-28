@@ -2,12 +2,8 @@ import React, {useState} from 'react'
 import "./ItemCountStyle.css"
 
 
-export default function ItemCount({stock, initial }) {
+export default function ItemCount({stock, initial, onAdd}) {
       const [count, setCount] = useState(initial); 
-
-      function onAdd(){
-
-      }
 
       function suma(){
         if(count < stock)
@@ -33,10 +29,9 @@ export default function ItemCount({stock, initial }) {
             type="button" 
             disabled={count === stock ? true : null}
             className="btn btn-stepper btn-secondary btn-sm">+</button>
-            <br/>
-            <button type="button" onClick={() => onAdd(count)}
-
-            disabled={stock === 0 ? true : null} className="btn btn-secondary btn-sm">
+            <br/>            
+            <button type="button" onClick={()=>onAdd(count)}
+             disabled={stock === 0 ? true : null} className="btn btn-secondary btn-sm">
               Agregar al carrito
             </button>
         </div>
