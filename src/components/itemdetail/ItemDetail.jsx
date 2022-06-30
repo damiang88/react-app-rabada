@@ -1,26 +1,33 @@
-import {React, useState} from 'react'
+import {React, useState, useContext} from 'react'
 import { Link } from 'react-router-dom';
 import ItemCount from '../itemcount/ItemCount'
 import './ItemDetail.css'
+import { CartContext } from '../../context/CartContext';
 
 export default function ItemDetail({item}) {
 
   const [ cant, setAddedToCart] = useState(0);
-
+  const { addItem, removeItem } = useContext(CartContext);
+  
+//Llamar función para agregar el item al cart
   function handleOnAdd(cantidad){
-       console.log( cantidad)
     
         setAddedToCart(cantidad);
+        addItem(item, cantidad);
 
       }
-
+    
+//Llamar función para quitar el item del cart
+  function handleOnRem(){
+            removeItem(item);
+      }
 
   return (  
 
     <div>Detalle
         <br/>
 
-        <div className="card cardList" style={{width: '80rem', height:'30rem'}}> 
+        <div className="card cardList" style={{maxWidth: '80rem', maxHeight:'30rem'}}> 
             <div className="card-body">
             <div className='row'>
                 <div className="col">
@@ -35,7 +42,11 @@ export default function ItemDetail({item}) {
                 {cant === 0 ? (
                     <ItemCount stock={item.stock} initial={1} onAdd={handleOnAdd} />
                 ) : (
+                    <div>
                     <Link to="/cart">Ir al carrito</Link>
+                    <br/><br/>
+                    <button onClick={handleOnRem}>Eliminar del carrito</button>
+                    </div>
                 )}                    
                 </div>
 
