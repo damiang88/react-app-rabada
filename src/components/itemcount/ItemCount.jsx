@@ -29,7 +29,7 @@ export default function ItemCount({stock, initial, onAdd}) {
             type="button" 
             disabled={count === stock ? true : null}
             className="btn btn-stepper btn-secondary btn-sm">+</button>
-            <br/>            
+            <br/>             <br/>                       
             <button type="button" onClick={()=>onAdd(count)}
              disabled={stock === 0 ? true : null} className="btn btn-secondary btn-sm">
               Agregar al carrito

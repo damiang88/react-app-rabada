@@ -9,9 +9,9 @@ export const CartProvider= ({children}) =>{
     const [cart, setCart]= useState([]);
     
     //funcion para quitar un item del carrito
-    const removeItem = (item) => {
+    const removeItem = (id) => {
         
-        cartProductFilt = cart.filter(p => p.id !== item.id )
+        cartProductFilt = cart.filter(p => p.id !== id )
         setCart(cartProductFilt);
 
     }; 
@@ -21,11 +21,26 @@ export const CartProvider= ({children}) =>{
 
         //evita agregar el mismo item dos veces
         if (isInCart(item.id)) {
-            console.log('el item esta en el carrito, agrega la cantidad');
+            const idToAdd= item.id;
+            let itemToAdd= cart.find(cadaItem=>cadaItem.id===idToAdd);
+            itemToAdd.cantidad += cantidad;
+            let newCart = cart.filter(p => p.id !== item.id );
+
+            setCart([...newCart, { ...itemToAdd}]);
         } else {
             setCart([...cart, { ...item, cantidad }]);
         }
     };
+
+
+    //Calcular el total en el carrito
+    const CantInCart = () => 
+    {
+        let total = 0
+        cart.forEach( item => total += item.cantidad)
+        return total;
+    };
+
 
     //verificar si el producto ya está en el carrito
     const isInCart = (id) => {
@@ -40,7 +55,7 @@ export const CartProvider= ({children}) =>{
 
     return(       
        
-        <CartContext.Provider  value={{cart, addItem, clearCart, removeItem}}>        
+        <CartContext.Provider  value={{cart, addItem, clearCart, removeItem,CantInCart}}>        
         {children}
         </CartContext.Provider>
       

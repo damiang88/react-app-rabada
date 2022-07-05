@@ -12,7 +12,7 @@ export default function ItemDetailContainer(props) {
       const traerProducto= new Promise ((res, rej)=>{
           setTimeout(()=> {
             res(productos.find(o => o.id === id)) //Por el momento se busca desde el array de productos 
-          },2000);      
+          },200);      
       })
       traerProducto
       .then((res)=>{

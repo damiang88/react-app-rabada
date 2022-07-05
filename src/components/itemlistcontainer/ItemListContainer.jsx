@@ -17,7 +17,7 @@ function ItemListContainer(props) {
                             else{
                               setTimeout(() => {
                                 res(productos);
-                              }, 2000);}
+                              }, 200);}
                              
     }); 
     traerProductos

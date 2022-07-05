@@ -19,7 +19,7 @@ export default function ItemDetail({item}) {
     
 //Llamar función para quitar el item del cart
   function handleOnRem(){
-            removeItem(item);
+            removeItem(item.id);
       }
 
   return (  
@@ -38,16 +38,19 @@ export default function ItemDetail({item}) {
                 <h4 className="card-title text-dark">{item.title}</h4>
                 <p className="card-title text-dark">{item.description}</p>
                 <p className="card-text text-dark"> ${item.price} </p>
-                <br/>
+                <br/> 
+
                 {cant === 0 ? (
                     <ItemCount stock={item.stock} initial={1} onAdd={handleOnAdd} />
                 ) : (
                     <div>
                     <Link to="/cart">Ir al carrito</Link>
                     <br/><br/>
-                    <button onClick={handleOnRem}>Eliminar del carrito</button>
                     </div>
                 )}                    
+                    <br />
+                    <button onClick={handleOnRem}>Eliminar del carrito</button>
+
                 </div>
 
             </div>
