@@ -7,6 +7,7 @@ import ItemDetailContainer from './components/itemdetailcontainer/ItemDetailCont
 import Cart from './components/cart/Cart';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
+import appFirebase from './components/firebase/Config';
 
 function App() {
 //<ItemListContainer greeting={"Bienvenido"}/> 
@@ -18,7 +19,7 @@ function App() {
         <NavBar logo={logo}/>
         <Routes>
           <Route exact path="/" element={<ItemListContainer />}/>
-          <Route exact path="/category/:id" element={<ItemListContainer />}/>
+          <Route exact path="/category/:categoryId" element={<ItemListContainer />}/>
           <Route exact path="/item/:id" element={<ItemDetailContainer />}/>
           <Route exact path="/cart" element={<Cart/>}/>
         </Routes>       

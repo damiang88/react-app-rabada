@@ -31,7 +31,7 @@ export default function ItemDetail({item}) {
             <div className="card-body">
             <div className='row'>
                 <div className="col">
-                <img alt="Articulo" src={item.pictureUrl} style={{maxWidth: "20rem", maxHeight:"20rem", alignContent:"center"}}/>
+                <img alt="Articulo" src={item.imageId} style={{maxWidth: "20rem", maxHeight:"20rem", alignContent:"center"}}/>
 
                 </div>
                 <div className="col">

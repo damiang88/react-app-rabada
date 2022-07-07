@@ -29,7 +29,7 @@ export default function Cart() {
           <ul className="list-group mx-auto justify-content-center"  style={{maxWidth: '50rem'}}>
               {cart.map((item) =>(
               <li className="list-group-item" key={item.id}>
-                <img alt="Articulo" src={item.pictureUrl} style={{maxWidth: "5rem", maxHeight:"5rem", alignContent:"center"}}/>
+                <img alt="Articulo" src={item.imageId} style={{maxWidth: "5rem", maxHeight:"5rem", alignContent:"center"}}/>
                 <b> Producto: </b> {item.title}
                 <b> Cantidad: </b> {item.cantidad}
                 <b> Precio: </b> $ {item.price}

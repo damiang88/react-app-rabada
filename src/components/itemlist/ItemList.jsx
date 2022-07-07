@@ -2,8 +2,7 @@ import React from 'react'
 import Item from '../item/Item'
 
   //Recibe Items y los mapea a <Item/>
-export default function ItemList({lista}) {
-
+export default function ItemList({lista}) { 
   return (
     <div>Catalogo
       <br></br>

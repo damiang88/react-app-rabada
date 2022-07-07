@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react'
 import { productos } from "../data/products";
 import ItemDetail from '../itemdetail/ItemDetail';
 import {useParams} from 'react-router-dom'
+import { traerUnProducto } from '../firebase/Config';
 
 export default function ItemDetailContainer(props) {
 
@@ -9,6 +10,16 @@ export default function ItemDetailContainer(props) {
     let {id} = useParams()
  
     useEffect( ()=> {
+
+      traerUnProducto(id)
+      .then((res)=> {
+                      setProduct(res);
+                    })
+      .catch((error)=>{
+                       console.log(error);
+      },[id]);
+  });      
+      /*
       const traerProducto= new Promise ((res, rej)=>{
           setTimeout(()=> {
             res(productos.find(o => o.id === id)) //Por el momento se busca desde el array de productos 
@@ -20,7 +31,7 @@ export default function ItemDetailContainer(props) {
        setProduct(res);
       })
   
-    },[id]);
+    },[id]);*/
   
   
   return (
