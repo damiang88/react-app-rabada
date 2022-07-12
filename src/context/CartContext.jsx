@@ -7,7 +7,7 @@ export const CartProvider= ({children}) =>{
 
     let cartProductFilt = []
     const [cart, setCart]= useState([]);
-    
+
     //funcion para quitar un item del carrito
     const removeItem = (id) => {
         
@@ -41,7 +41,14 @@ export const CartProvider= ({children}) =>{
         return total;
     };
 
+    function totalPriceCart() {
+        let total = 0;
+        cart.forEach((item) => (total = total + item.cantidad * item.price));
 
+        return total;
+      }
+
+      
     //verificar si el producto ya está en el carrito
     const isInCart = (id) => {
         //some devuelve true o false
@@ -55,7 +62,8 @@ export const CartProvider= ({children}) =>{
 
     return(       
        
-        <CartContext.Provider  value={{cart, addItem, clearCart, removeItem,CantInCart}}>        
+        <CartContext.Provider  value={{cart, addItem, clearCart, removeItem,CantInCart, 
+             totalPriceCart}}>        
         {children}
         </CartContext.Provider>
       

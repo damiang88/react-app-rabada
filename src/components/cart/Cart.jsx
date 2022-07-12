@@ -2,17 +2,36 @@ import React from 'react';
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import {Link} from'react-router-dom';
+import { createBuyOrder } from '../firebase/Config';
 
 export default function Cart() {
-  const { cart, clearCart, removeItem } = useContext(CartContext);
+  const { cart, removeItem, clearCart, totalPriceCart } = useContext(CartContext);   
   let subtotal = 0
-  function logCart(){
-    console.log(cart)
+
+  function handleBuyOrder(evt) {
+    evt.preventDefault();
+    const dataOrder = {
+      buyer:{
+        name:"User Prueba",
+        phone: 1123121,
+        email:"UserPrueba@gmail.com"
+    },
+      items: cart,
+      total: totalPriceCart(),
+    };
+
+    createBuyOrder(dataOrder).then(( orderDataCreated ) => {
+      clearCart();
+      console.log(orderDataCreated.id)
+    });
+
   }
 
   function handleClear(){
     clearCart()
   }
+
+
   return (
         
     <div>
@@ -20,12 +39,12 @@ export default function Cart() {
 
     {(cart.length === 0)  ? ( 
        <div>
-       <h3>No hay nada en el carrito</h3>
-       <Link to={"/"} ><button >Volver</button></Link>
-
+          <h3>Su carrito está vacío</h3>
+          <Link to={"/"} ><button >Volver</button></Link>
+          
        </div> ) 
 
-    : ( <div>
+    :  ( <div>
           <ul className="list-group mx-auto justify-content-center"  style={{maxWidth: '50rem'}}>
               {cart.map((item) =>(
               <li className="list-group-item" key={item.id}>
@@ -41,7 +60,7 @@ export default function Cart() {
                 ))}
           </ul>
           <br/> <br/>
-              <button onClick={logCart}>Finalizar Compra</button>
+              <button onClick={handleBuyOrder}>Finalizar Compra</button>
               <br/> <br/>
               <button onClick={handleClear}>Vaciar Carrito</button>
               <br/> <br/>
