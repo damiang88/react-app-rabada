@@ -5,13 +5,14 @@ import "./ItemCountStyle.css"
 export default function ItemCount({stock, initial, onAdd}) {
       const [count, setCount] = useState(initial); 
 
+      //Handler para sumar el stock pedido
       function suma(){
         if(count < stock)
         {
             setCount(count + 1);
         };
       };
-      
+      //Handler para restar el stock pedido
       function resta(){
           if(count> initial){
             setCount(count-1);

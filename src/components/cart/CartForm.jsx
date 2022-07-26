@@ -10,21 +10,23 @@ function CartForm() {
   const [ orderId, setOrderId] = useState(false);
   let total = 0
 
-  const handleClose = () => { clearCart(); 
-                              setShow(false)};
 
-  const handleShow = (id) =>{ setOrderId(id);
-                              setShow(true) } ;
-
-
+  //Inicializar los datos del comprador
   const [buyer, setBuyer] = useState(  { name: "",
                                           phone: "",
                                           email: "",
                                         },
                                       )
+  //Handler para el evento de cerrar el popup
+  const handleClose = () => {setShow(false)
+                             clearCart() };
+  
+  //Handler para el evento de mostrar el popup con el Id de la compra
+  const handleShow = (id) =>{ setOrderId(id);
+                              setShow(true)
+                            } ;
 
-
-                                      
+  //Recuperar los valores ingresados en los campos de input
   const handleChange = (evt) => {
     
     const field = evt.target.name;
@@ -36,6 +38,7 @@ function CartForm() {
     })
   }
 
+  //Funcion para crear el pedido
   function handleBuyOrder(evt) {
     evt.preventDefault();
     const dataOrder = {
@@ -44,9 +47,18 @@ function CartForm() {
       total: totalPriceCart(),
     };
 
+    //Llamada a los metodos asincronicos para crear la orden en firebase
     createBuyOrder(dataOrder).then(( orderDataCreated ) => {
       handleShow(orderDataCreated.id);
-      
+
+    //Si no se toca en 5000ms, se cierra solo
+    const traerProductos = new Promise((res, rej) => {
+      setTimeout(() => {
+        res(handleClose());
+      }, 9000);
+    });
+    
+                                 
     });
 
   }  
@@ -125,9 +137,7 @@ function CartForm() {
                 </Modal.Footer>
               </Modal>
             </div>
-
-  )}          
-      
+  )} 
       </div>
   )
 }

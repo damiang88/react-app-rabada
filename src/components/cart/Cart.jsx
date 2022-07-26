@@ -7,16 +7,13 @@ export default function Cart() {
   const { cart, removeItem, clearCart } = useContext(CartContext);   
   let subtotal = 0
 
+  //Handler para boton de vaciar el carrito
    function handleClear(){
     clearCart()
   }
 
-
   return (
-        
     <div>
-    <div>
-
     {(cart.length === 0)  ? ( 
        <div>
           <h3>Su carrito está vacío</h3>
@@ -51,13 +48,7 @@ export default function Cart() {
               className="btn btn-success border btn-lg"  to={"/cartForm"}>
                 Checkout
               </Link>
-
-       </div> )}  
-
-
-    </div>
-
-</div>
-
+    </div> )}  
+  </div>
   )
 }

@@ -38,7 +38,6 @@ export async function traerProductos(categoryId){
          productosSnapshot= await getDocs(itemsCollection);
 
     }
-
     let respuesta= productosSnapshot.docs.map(doc=> {
       return{
         ...doc.data(),
@@ -82,7 +81,7 @@ export async function traerUnProducto(itemId) {
   }
 
 
-
+// Funcion para carga inicial de firestore
   export async function exportDataToFirestore() {
     const productos = [
       { id: "1", 
@@ -151,11 +150,10 @@ export async function traerUnProducto(itemId) {
     },
     ];
 
-  
-    const plantCollection = collection(appFirestore, "items");
+    const itemCollection = collection(appFirestore, "items");
   
     productos.forEach((item) => {
-      const newDoc = doc(plantCollection);
+      const newDoc = doc(itemCollection);
       setDoc(newDoc, item)
         .then((res) => {
           console.log("Documento guardado:", newDoc.id);

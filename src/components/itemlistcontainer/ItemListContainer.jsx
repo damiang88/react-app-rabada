@@ -9,8 +9,10 @@ function ItemListContainer(props) {
   const { categoryId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   
+  //Llamada para recuperar todos los productos desde Firebase
   useEffect( ()=> {
-                      traerProductos(categoryId)
+                      traerProductos(categoryId) //Se pasa la categoría
+                                                //(el metodo receptor revisa si esta vacía o no)
                       .then((res)=> {
                                       setProduct(res);
                                     })
@@ -19,25 +21,16 @@ function ItemListContainer(props) {
                                     });
                   },[categoryId]);
 
-                  if(isLoading){
-                    return (
-                    <div className="mx-auto container h-96 flex justify-around">
-                      <div className="flex-1 flex justify-center items-center">
-                      <RotateLoader className="mx-auto align-middle" color={"rgb(000, 000, 000)"} size={20} />
-                      </div>
-                    </div>
-                    )
-                  }                  
-
   if(isLoading){
-    return (
-    <div className="mx-auto container h-96 flex justify-around">
-      <div className="flex-1 flex justify-center items-center">
-      <RotateLoader className="mx-auto align-middle" color={"rgb(000, 000, 000)"} size={30} />
-      </div>
+  return (
+  <div className="mx-auto container h-96 flex justify-around">
+    <div className="flex-1 flex justify-center items-center">
+        <RotateLoader className="mx-auto align-middle" color={"rgb(000, 000, 000)"} size={20} />
     </div>
-    )
-  }
+  </div>
+  )
+  }                  
+
   return (
     <div className="container">
           <p>{props.greeting}</p>

@@ -11,7 +11,6 @@ import Error404 from './components/Error404';
 import CartForm from './components/cart/CartForm';
 
 function App() {
-//<ItemListContainer greeting={"Bienvenido"}/> 
 
   return (
     <CartProvider>

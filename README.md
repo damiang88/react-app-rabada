@@ -11,7 +11,10 @@ Tienda de venta de productos especializada en articulos informaticos y relaciona
 
 ### Librerias y frameworks usados
 
-| Nombre             | Descripcion   |
-| ------------------ | ------------- |
-| React-router v6.3  | Navigation    |
-| bootstrap v5.1     | Css framework |
+| Nombre                 | Descripcion        |
+| ------------------     |  --------------    |
+| React-router v6.3      | Navigation         |
+| bootstrap v5.1         | Css framework      | 
+| react-spinners v0.13.3 | Just a Spinner     |
+| firebase v9.8.4        | Cloud Data Storage |
+

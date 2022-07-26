@@ -10,7 +10,7 @@ export default function ItemDetailContainer(props) {
     const [isLoading, setIsLoading] = useState(true);
     let {id} = useParams()
 
-
+    //Llamada para recuperar los datos del producto en la ruta de la pagina
     useEffect( ()=> {
 
       traerUnProducto(id)
@@ -22,11 +22,11 @@ export default function ItemDetailContainer(props) {
                     });
   },[id]);      
   
-
+  //Mostrar el spinning
   if(isLoading){
     return (
     <div className="mx-auto container h-96 flex justify-around">
-      <div className="flex-1 flex justify-center items-center">
+      <div className="flex-1 flex justify-center items-center align-middle">
       <RotateLoader className="mx-auto align-middle" color={"rgb(000, 000, 000)"} size={20} />
       </div>
     </div>

@@ -2,4 +2,6 @@ npx create-react-app react-app-dr
 cd react-app-dr
 npm start
 
+npm run build
+
 npm install firebase
