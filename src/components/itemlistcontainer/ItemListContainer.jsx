@@ -1,80 +1,43 @@
 import React, { useState, useEffect } from "react";
-
-//import { productos } from "../data/products";
 import ItemList from "../itemlist/ItemList";
 import {useParams} from 'react-router-dom'
 import { traerProductos } from "../firebase/Config";
-
+import RotateLoader from 'react-spinners/RotateLoader'
 
 function ItemListContainer(props) {
   const [products, setProduct] = useState([]);
   const { categoryId } = useParams();
-
-
+  const [isLoading, setIsLoading] = useState(true);
+  
   useEffect( ()=> {
                       traerProductos(categoryId)
                       .then((res)=> {
                                       setProduct(res);
                                     })
-                      .catch((error)=>{
-                                       console.log(error);
-                      },[categoryId]);
-                  });
+                                    .finally(() => {
+                                      setIsLoading(false);
+                                    });
+                  },[categoryId]);
 
-  /*
-  useEffect( () => {
-
-    /*
-    const querydb = getFirestore();
-    const queryCollection = collection(querydb, "items");
-
-        if (categoryId) {
-          const queryFilter = query(
-              queryCollection,
-              where("categoryID", "==", categoryId )
-          );
-
-         const traerProductos = async () => { 
-              await getDocs(queryFilter)
-                .then((resp) => setProduct(
-                      resp.docs.map((item) => ({ id: item.id, ...item.data() }))
+                  if(isLoading){
+                    return (
+                    <div className="mx-auto container h-96 flex justify-around">
+                      <div className="flex-1 flex justify-center items-center">
+                      <RotateLoader className="mx-auto align-middle" color={"rgb(000, 000, 000)"} size={20} />
+                      </div>
+                    </div>
                     )
-                ).catch((err) => console.log(err)).finally(console.log("FINALLY"));
-              }
-        } else {
-          const traerProductos = async () => { 
+                  }                  
 
-          await getDocs(queryCollection)
-              .then((resp) => setProduct(
-                    resp.docs.map((item) => ({ id: item.id, ...item.data() }))
-                )
-              ).catch((err) => console.log(err)).finally(console.log("FINALLY x2"));
-        }
-      }
-        
-    }, [categoryId]);
-    */
-
-    /*const traerProductos = new Promise((res, rej) => {
-      if(categoryId){ setTimeout(() => {
-                              res(products.filter(({category}) => category === categoryId));
-                            }, 2000);}
-                            else{
-                              setTimeout(() => {
-                                res(products);
-                              }, 200);}
-                             
-    }); 
-    traerProductos
-      .then((res) => {
-        setProduct(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-  }, [categoryId]);*/
-
+  if(isLoading){
+    return (
+    <div className="mx-auto container h-96 flex justify-around">
+      <div className="flex-1 flex justify-center items-center">
+      <RotateLoader className="mx-auto align-middle" color={"rgb(000, 000, 000)"} size={30} />
+      </div>
+    </div>
+    )
+  }
   return (
     <div className="container">
           <p>{props.greeting}</p>

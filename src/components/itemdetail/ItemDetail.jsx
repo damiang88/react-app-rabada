@@ -31,13 +31,13 @@ export default function ItemDetail({item}) {
             <div className="card-body">
             <div className='row'>
                 <div className="col">
-                <img alt="Articulo" src={item.imageId} style={{maxWidth: "20rem", maxHeight:"20rem", alignContent:"center"}}/>
+                <img alt="Articulo" src={item.pictureUrl} style={{maxWidth: "20rem", maxHeight:"20rem", alignContent:"center"}}/>
 
                 </div>
                 <div className="col">
                 <h4 className="card-title text-dark">{item.title}</h4>
                 <p className="card-title text-dark">{item.description}</p>
-                <p className="card-text text-dark"> ${item.price} </p>
+                <p className="card-title text-dark"> <b>Precio: </b> ${item.price} </p>
                 <br/> 
 
                 {cant === 0 ? (
@@ -49,7 +49,7 @@ export default function ItemDetail({item}) {
                     </div>
                 )}                    
                     <br />
-                    <button onClick={handleOnRem}>Eliminar del carrito</button>
+                   
 
                 </div>
 

@@ -8,7 +8,7 @@ export default function item({item}) {
   return (
 
         <div className="card cardList" style={{width: '18rem'}}> 
-            <img  alt="Articulo"  src={item.imageId} />
+            <img  alt="Articulo"  src={item.pictureUrl} />
             
             <div className="card-body">
                 <h5 className="card-title text-dark">{item.title}</h5>

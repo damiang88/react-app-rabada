@@ -2,32 +2,12 @@ import React from 'react';
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import {Link} from'react-router-dom';
-import { createBuyOrder } from '../firebase/Config';
 
 export default function Cart() {
-  const { cart, removeItem, clearCart, totalPriceCart } = useContext(CartContext);   
+  const { cart, removeItem, clearCart } = useContext(CartContext);   
   let subtotal = 0
 
-  function handleBuyOrder(evt) {
-    evt.preventDefault();
-    const dataOrder = {
-      buyer:{
-        name:"User Prueba",
-        phone: 1123121,
-        email:"UserPrueba@gmail.com"
-    },
-      items: cart,
-      total: totalPriceCart(),
-    };
-
-    createBuyOrder(dataOrder).then(( orderDataCreated ) => {
-      clearCart();
-      console.log(orderDataCreated.id)
-    });
-
-  }
-
-  function handleClear(){
+   function handleClear(){
     clearCart()
   }
 
@@ -45,28 +25,33 @@ export default function Cart() {
        </div> ) 
 
     :  ( <div>
-          <ul className="list-group mx-auto justify-content-center"  style={{maxWidth: '50rem'}}>
+      <br />
+          <ul className="list-group mx-auto justify-content-center"  style={{maxWidth: '60rem'}}>
               {cart.map((item) =>(
-              <li className="list-group-item" key={item.id}>
-                <img alt="Articulo" src={item.imageId} style={{maxWidth: "5rem", maxHeight:"5rem", alignContent:"center"}}/>
+              <li className="list-group-item" key={item.id} >
+                <img alt="Articulo" src={item.pictureUrl} style={{maxWidth: "5rem", maxHeight:"5rem", alignContent:"center"}}/>
                 <b> Producto: </b> {item.title}
-                <b> Cantidad: </b> {item.cantidad}
+                <b> Cant: </b> {item.cantidad}
                 <b> Precio: </b> $ {item.price}
                 <b> Subtotal: </b> $ {(item.cantidad * item.price)}
-                <div  className="ml-4"> 
-                <button onClick={()=>removeItem(item.id)}> Eliminar </button>
-                </div>
+                <b>  </b>
+                <button className="btn btn-secondary border btn-sm"
+                 onClick={()=>removeItem(item.id)} > Quitar </button>
+                
               </li>
                 ))}
           </ul>
           <br/> <br/>
-              <button onClick={handleBuyOrder}>Finalizar Compra</button>
+              <button className="btn btn-secondary border btn-md" 
+              onClick={handleClear}>Vaciar Carrito</button>
               <br/> <br/>
-              <button onClick={handleClear}>Vaciar Carrito</button>
-              <br/> <br/>
-              {cart.forEach(item => subtotal += (item.price * item.cantidad))}
-              <h3>Total: ${subtotal} </h3>
-      
+               {cart.forEach(item => subtotal += (item.price * item.cantidad))}
+              <h3>Total: ${subtotal} </h3>          
+              <Link 
+              className="btn btn-success border btn-lg"  to={"/cartForm"}>
+                Checkout
+              </Link>
+
        </div> )}  
 
 

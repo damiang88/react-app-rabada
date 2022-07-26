@@ -1,39 +1,39 @@
 import React,{useState, useEffect} from 'react'
-import { productos } from "../data/products";
 import ItemDetail from '../itemdetail/ItemDetail';
 import {useParams} from 'react-router-dom'
 import { traerUnProducto } from '../firebase/Config';
+import RotateLoader from 'react-spinners/RotateLoader'
 
 export default function ItemDetailContainer(props) {
 
-    const [product, setProduct]= useState({});
+    const [product, setProduct]= useState(0);
+    const [isLoading, setIsLoading] = useState(true);
     let {id} = useParams()
- 
+
+
     useEffect( ()=> {
 
       traerUnProducto(id)
       .then((res)=> {
                       setProduct(res);
                     })
-      .catch((error)=>{
-                       console.log(error);
-      },[id]);
-  });      
-      /*
-      const traerProducto= new Promise ((res, rej)=>{
-          setTimeout(()=> {
-            res(productos.find(o => o.id === id)) //Por el momento se busca desde el array de productos 
-          },200);      
-      })
-      traerProducto
-      .then((res)=>{
-      
-       setProduct(res);
-      })
+                    .finally(() => {
+                      setIsLoading(false);
+                    });
+  },[id]);      
   
-    },[id]);*/
-  
-  
+
+  if(isLoading){
+    return (
+    <div className="mx-auto container h-96 flex justify-around">
+      <div className="flex-1 flex justify-center items-center">
+      <RotateLoader className="mx-auto align-middle" color={"rgb(000, 000, 000)"} size={20} />
+      </div>
+    </div>
+    )
+  }
+
+
   return (
     <div>
         <div className="container">     
