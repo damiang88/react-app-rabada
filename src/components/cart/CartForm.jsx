@@ -51,7 +51,7 @@ function CartForm() {
     createBuyOrder(dataOrder).then(( orderDataCreated ) => {
       handleShow(orderDataCreated.id);
 
-    //Si no se toca en 5000ms, se cierra solo
+    //Si no se toca en tantos ms, se cierra solo
     const traerProductos = new Promise((res, rej) => {
       setTimeout(() => {
         res(handleClose());
