@@ -1,6 +1,7 @@
 import CartWidget from "./CartWidget/CartWidget";
 import {Link, NavLink} from'react-router-dom';
 
+
 export default function NavBar(props){
 
     return (    

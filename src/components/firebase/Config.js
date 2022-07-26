@@ -20,10 +20,6 @@ const firebaseConfig = {
 const appFirebase = initializeApp(firebaseConfig);
 const appFirestore= getFirestore(appFirebase);
 
-export function testDatabse(){
-    console.log(appFirestore)
-}
-
 //Traer los productos para listview
 export async function traerProductos(categoryId){
     const itemsCollection= collection(appFirestore, "items");
