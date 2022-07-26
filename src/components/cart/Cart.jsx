@@ -17,8 +17,7 @@ export default function Cart() {
     {(cart.length === 0)  ? ( 
        <div>
           <h3>Su carrito está vacío</h3>
-          <Link to={"/"} ><button >Volver</button></Link>
-          
+                    
        </div> ) 
 
     :  ( <div>
