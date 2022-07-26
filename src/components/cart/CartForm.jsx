@@ -38,11 +38,7 @@ function CartForm() {
     })
   }
 
-  const timeoutClose = new Promise((res, rej) => {
-    setTimeout(() => {
-      res(handleClose());
-    }, 9000);
-  });  
+
 
   //Funcion para crear el pedido
   function handleBuyOrder(evt) {
@@ -56,8 +52,12 @@ function CartForm() {
     //Llamada a los metodos asincronicos para crear la orden en firebase
     createBuyOrder(dataOrder).then(( orderDataCreated ) => {
       handleShow(orderDataCreated.id); 
-      timeoutClose();    //Si no se toca en tantos ms, se cierra solo                               
-
+       //Si no se toca en tantos ms, se cierra solo                               
+      const timeoutClose = new Promise((res, rej) => {
+        setTimeout(() => {
+          res(handleClose());
+        }, 9000);
+      });  
     });
 
   }  
