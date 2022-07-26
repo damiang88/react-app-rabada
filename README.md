@@ -7,7 +7,10 @@ Tienda de venta de productos especializada en articulos informaticos y relaciona
 - Navbar para listar categorias, boton de home con branding
 - Pagina principal de lista de productos, cada producto tiene su stock y no permite seleccionar cantidades mayores
 - Pagina de detalle para cada producto, imagen de mayor tamaño y descripcion
-
+- Carrito de compras con previsualizacion y subtotal 
+- Carrito de confirmacion con form que pide datos de usuario
+- Conexion con firebase para obtener listado de productos y guardar los pedidos
+- Modal de confirmacion de pedido para mostrar el código creado
 
 ### Librerias y frameworks usados
 

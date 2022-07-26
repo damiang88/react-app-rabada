@@ -4,9 +4,6 @@ import { getFirestore, getDocs, getDoc, addDoc,
           doc, collection, query, Timestamp, where,
         setDoc } from  "firebase/firestore";
 
-        let flag = 0
-
-
 const firebaseConfig = {
     apiKey: "AIzaSyC7nXkN_ZOesVnBLV35YRn2FlIGeW_P7Pk",
     authDomain: "coderhouse-proyecto-dr.firebaseapp.com",
@@ -156,9 +153,11 @@ export async function traerUnProducto(itemId) {
       const newDoc = doc(itemCollection);
       setDoc(newDoc, item)
         .then((res) => {
-          console.log("Documento guardado:", newDoc.id);
+            //Do Nothing
         })
-        .catch((error) => console.log("error obteniendo los datos: ", error));
+        .catch( 
+                //Nothing to catch
+                );
     });
   }
 
